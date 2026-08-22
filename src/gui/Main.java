@@ -1,4 +1,4 @@
-package template;
+package gui;
 
 import static algoritmos.SelectionSort.selectionSort;
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
@@ -18,20 +18,10 @@ public class Main extends EngineFrame {
     private double tempoParaMudar;
     private double contadorTempo;
     
-    private Image logo;
-    
-    
-    
     public Main() {
         
-        super(
-            800,                 // largura                      / width
-            450,                 // algura                       / height
-            "Window Title",      // título                       / title
-            60,                  // quadros por segundo desejado / target FPS
-            true 
-        );
-        
+        super(800,450,"Window Title", 60, true );
+    
     }
     
     @Override

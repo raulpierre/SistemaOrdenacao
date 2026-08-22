@@ -1,4 +1,4 @@
-package template;
+package gui;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.BLACK;
@@ -16,6 +16,7 @@ import java.util.List;
  *
  * @author raul
  */
+
 public class EstadoOrdenacao{
     int[] array;
     int posI;
@@ -66,7 +67,7 @@ public class EstadoOrdenacao{
     public static void salvarEstadoOrdenacao(int[] origem, int posI, int posJ, int posMenor, List<EstadoOrdenacao> copias){
         int[] copia = new int[origem.length];
         
-        //System.arraycopy(origem, 0, copia, 0, origem.length); melhor maneira de se coppiar um array em java
+        //System.arraycopy(origem, 0, copia, 0, origem.length); melhor maneira de se copiar um array em java
         
         for(int i = 0; i <copia.length; i++){
             copia[i] = origem[i];
