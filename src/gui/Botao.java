@@ -27,6 +27,22 @@ public class Botao {
         this.posY = posY;
     
     }
+
+    public int getPosX () {
+        return posX;
+    }
+
+    public int getPosY () {
+        return posY;
+    }
+
+    public double getLargura () {
+        return largura;
+    }
+
+    public int getAltura () {
+        return altura;
+    }
     
     
     public void desenhaBotao( EngineFrame e ){
