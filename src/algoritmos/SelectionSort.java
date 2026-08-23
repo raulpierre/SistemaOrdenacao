@@ -1,8 +1,8 @@
 package algoritmos;
 
 import java.util.List;
-import template.Main;
-import template.EstadoOrdenacao;
+import gui.Main;
+import gui.EstadoOrdenacao;
 
 /**
  *
