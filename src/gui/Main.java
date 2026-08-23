@@ -1,5 +1,7 @@
 package gui;
 
+
+import static algoritmos.QuickSort.quickSort;
 import static algoritmos.SelectionSort.selectionSort;
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import br.com.davidbuzatto.jsge.core.utils.CoreUtils;
@@ -34,8 +36,10 @@ public class Main extends EngineFrame {
         tempoParaMudar = 1;
         contadorTempo = 0;
         
-        selectionSort(a, copias);
-        System.out.println(copias.size());
+        //selectionSort(a, copias);
+        //System.out.println(copias.size());
+        quickSort(a, 0, a.length - 1);
+        System.out.println(java.util.Arrays.toString(a));
     }
 
     
@@ -51,6 +55,7 @@ public class Main extends EngineFrame {
             contadorTempo = 0;
         }
         
+        
     }
     
     
@@ -59,7 +64,7 @@ public class Main extends EngineFrame {
         
         clearBackground( WHITE );
         
-        copias.get(copiaAtual).desenharEstadoOrdenacao(this);
+        //copias.get(copiaAtual).desenharEstadoOrdenacao(this);
     
     }
    
