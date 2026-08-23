@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Main extends EngineFrame {
+public class TelaSelectionSort extends EngineFrame {
+    
+    
     private int[] a;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
@@ -18,7 +20,7 @@ public class Main extends EngineFrame {
     private double tempoParaMudar;
     private double contadorTempo;
     
-    public Main() {
+    public TelaSelectionSort() {
         
         super(800,450,"Window Title", 60, true );
     
@@ -62,11 +64,5 @@ public class Main extends EngineFrame {
         copias.get(copiaAtual).desenharEstadoOrdenacao(this);
     
     }
-   
-    
-    public static void main( String[] args ) {
-        new Main();
-    }
-    
    
 }

@@ -6,7 +6,13 @@ import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
  *
  * @author cayke
  */
-public class Gui extends EngineFrame {
+public class MenuInicial extends EngineFrame {
+    
+    
+    
+    public MenuInicial(){
+        super(800,450,"Menu Inicial", 60,true);
+    }
 
     @Override
     public void create () {
@@ -20,7 +26,9 @@ public class Gui extends EngineFrame {
 
     @Override
     public void draw () {
-        
+        fillRectangle(50, 50, 50, 30, PINK);
     }
+    
+    
     
 }
