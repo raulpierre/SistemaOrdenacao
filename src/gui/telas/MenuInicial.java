@@ -1,5 +1,6 @@
 package gui.telas;
 
+import br.com.davidbuzatto.jsge.collision.aabb.AABB;
 import gui.componentesTela.Botao;
 
 /**
@@ -9,10 +10,16 @@ import gui.componentesTela.Botao;
 public class MenuInicial implements InterfaceTela {
     
     Botao selectionSort;
+    
+    Botao bubbleSort;
+    
 
     @Override
     public void create () {
-        selectionSort = new Botao (50, 50, "Selection Sort" );
+        int posX = 50;
+        int posY = 50;
+        selectionSort = new Botao (posX, posY, "Selection Sort" );
+        bubbleSort = new Botao(posX, posY + 50 , "Bubble Sort"); 
     }
 
     @Override
@@ -21,17 +28,20 @@ public class MenuInicial implements InterfaceTela {
         int mouseX = tela.getMouseX ();
         int mouseY = tela.getMouseY ();
         
-        boolean colisao =   mouseX >= selectionSort.getPosX () 
-                            && mouseX <= selectionSort.getPosX() + selectionSort.getLargura () 
-                            && mouseY >= selectionSort.getPosY() 
-                            && mouseY <= selectionSort.getPosY() + selectionSort.getAltura () ? 
-                            true : false;
         
-        if(colisao){
+        if(selectionSort.checarColisao ( mouseX , mouseY )){
             
              if(tela.isMouseButtonPressed ( tela.MOUSE_BUTTON_LEFT )){
                  System.out.println ( "CLICOU" );
                tela.mudarTela ( new TelaSelectionSort() );
+            }
+        }
+        
+        if(bubbleSort.checarColisao ( mouseX , mouseY )){
+            
+             if(tela.isMouseButtonPressed ( tela.MOUSE_BUTTON_LEFT )){
+                 System.out.println ( "CLICOU" );
+               tela.mudarTela ( new TelaBubbleSort() );
             }
         }
     }
@@ -39,6 +49,7 @@ public class MenuInicial implements InterfaceTela {
     @Override
     public void draw ( TelaAtual tela ) {
        selectionSort.desenhaBotao ( tela );
+       bubbleSort.desenhaBotao ( tela );
     }
 
     @Override
