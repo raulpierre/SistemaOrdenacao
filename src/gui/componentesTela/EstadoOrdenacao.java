@@ -1,4 +1,4 @@
-package gui;
+package gui.componentesTela;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.BLACK;

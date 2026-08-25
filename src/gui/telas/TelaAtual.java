@@ -1,4 +1,4 @@
-package gui;
+package gui.telas;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 

@@ -1,4 +1,4 @@
-package gui;
+package gui.telas;
 
 import static algoritmos.SelectionSort.selectionSort;
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
@@ -6,6 +6,7 @@ import br.com.davidbuzatto.jsge.core.utils.CoreUtils;
 import br.com.davidbuzatto.jsge.core.utils.DrawingUtils;
 import br.com.davidbuzatto.jsge.geom.Rectangle;
 import br.com.davidbuzatto.jsge.image.Image;
+import gui.componentesTela.EstadoOrdenacao;
 import java.util.ArrayList;
 import java.util.List;
 

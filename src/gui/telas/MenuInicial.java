@@ -1,4 +1,6 @@
-package gui;
+package gui.telas;
+
+import gui.componentesTela.Botao;
 
 /**
  *
