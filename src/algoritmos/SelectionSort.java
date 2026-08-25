@@ -11,15 +11,23 @@ public class SelectionSort {
     
     public static void selectionSort(int[] a, List<EstadoOrdenacao> copias){
         EstadoOrdenacao.salvarEstadoOrdenacao(a, -1, -1, -1, copias);
-        for(int i = 0; i < a.length; i++){
+        for(int i = 0; i < a.length / 2; i++){
             int menor = i;
-            for(int j = i + 1; j < a.length; j++ ){
+            int maior = i;
+            for(int j = i + 1; j < a.length - i; j++ ){
                 if (a[menor] > a [j]){
                     menor = j;
                 }
+                if(a[maior] < a[j]){
+                    maior = j;
+                }
                 EstadoOrdenacao.salvarEstadoOrdenacao(a, i, j, menor, copias);
             }
-            trocar(a, i,menor);
+            trocar(a, i, menor);
+            if(maior == i){
+                maior = menor;
+            }
+            trocar(a, a.length - i - 1, maior);
             EstadoOrdenacao.salvarEstadoOrdenacao(a, i, 0, menor, copias);
         } 
     }
