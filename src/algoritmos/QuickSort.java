@@ -1,6 +1,6 @@
 package algoritmos;
 
-import gui.EstadoOrdenacao;
+import gui.componentesTela.EstadoOrdenacao;
 import java.util.List;
 
 /**
