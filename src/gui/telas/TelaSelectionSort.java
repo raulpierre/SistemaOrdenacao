@@ -1,30 +1,21 @@
-package gui;
+package gui.telas;
 
 import static algoritmos.SelectionSort.selectionSort;
-import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
-import br.com.davidbuzatto.jsge.core.utils.CoreUtils;
-import br.com.davidbuzatto.jsge.core.utils.DrawingUtils;
-import br.com.davidbuzatto.jsge.geom.Rectangle;
-import br.com.davidbuzatto.jsge.image.Image;
+import gui.componentesTela.EstadoOrdenacao;
+import gui.componentesTela.Grafico;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaSelectionSort extends EngineFrame {
-    
+public class TelaSelectionSort implements InterfaceTela {
     
     private int[] a;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
+    private Grafico grafico;
     
     private double tempoParaMudar;
     private double contadorTempo;
-    
-    public TelaSelectionSort() {
-        
-        super(800,450,"Window Title", 60, true );
-    
-    }
     
     @Override
     public void create() {
@@ -32,6 +23,7 @@ public class TelaSelectionSort extends EngineFrame {
         copias = new ArrayList<>();
         a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
         copiaAtual = 0;
+        grafico = new Grafico();
         
         tempoParaMudar = 1;
         contadorTempo = 0;
@@ -42,7 +34,7 @@ public class TelaSelectionSort extends EngineFrame {
 
     
     @Override
-    public void update( double delta ) {
+    public void update( double delta, TelaAtual tela ) {
         
         contadorTempo += delta;
         
@@ -55,14 +47,16 @@ public class TelaSelectionSort extends EngineFrame {
         
     }
     
-    
     @Override
-    public void draw() {
+    public void draw(TelaAtual tela) {
         
-        clearBackground( WHITE );
-        
-        copias.get(copiaAtual).desenharEstadoOrdenacao(this);
+        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
     
+    }
+
+    @Override
+    public String getTitulo () {
+        return "Seletion Sort";
     }
    
 }

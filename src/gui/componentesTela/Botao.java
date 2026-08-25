@@ -1,4 +1,4 @@
-package gui;
+package gui.componentesTela;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_A;
@@ -26,6 +26,22 @@ public class Botao {
         this.posX = posX;
         this.posY = posY;
     
+    }
+
+    public int getPosX () {
+        return posX;
+    }
+
+    public int getPosY () {
+        return posY;
+    }
+
+    public double getLargura () {
+        return largura;
+    }
+
+    public int getAltura () {
+        return altura;
     }
     
     
