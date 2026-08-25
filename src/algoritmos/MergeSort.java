@@ -2,7 +2,7 @@ package algoritmos;
 
 /**
  *
- * @author raul
+ * @author cayke
  */
 public class MergeSort {
     
