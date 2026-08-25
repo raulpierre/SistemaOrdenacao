@@ -22,12 +22,15 @@ public class BubbleSort {
                 
                 int  j = i + 1;
                 
+                salvarEstadoOrdenacao(a , i , j, i , copias );
+                
                 if(a[i] > a[j]){
                     int temp = a[i];
                     a[i] = a[j];
                     a[j] = temp;
                     troca = true;
                     
+                    salvarEstadoOrdenacao(a, i , j , i , copias);
                 }
             }
             
