@@ -1,20 +1,16 @@
 package gui.telas;
 
-import algoritmos.HeapSort;
-import static algoritmos.SelectionSort.selectionSort;
+import static algoritmos.MergeSort.mergeSort;
 import gui.componentesTela.EstadoOrdenacao;
 import gui.componentesTela.Grafico;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author cayke
  */
-
-public class TelaHeapSort implements InterfaceTela {
-    
+public class TelaMergeSort implements InterfaceTela {
     private int[] a;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
@@ -22,8 +18,6 @@ public class TelaHeapSort implements InterfaceTela {
     
     private double tempoParaMudar;
     private double contadorTempo;
-    
-    
     
     @Override
     public void create() {
@@ -36,8 +30,8 @@ public class TelaHeapSort implements InterfaceTela {
         tempoParaMudar = 1;
         contadorTempo = 0;
         
-        HeapSort.heapSort(a, copias);
-        System.out.println();
+        mergeSort(a, copias);
+        System.out.println(copias.size());
     }
 
     
@@ -64,7 +58,7 @@ public class TelaHeapSort implements InterfaceTela {
 
     @Override
     public String getTitulo () {
-        return "Heap Sort";
+        return "Merge Sort";
     }
-   
+
 }
