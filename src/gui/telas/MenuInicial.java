@@ -38,7 +38,34 @@ public class MenuInicial implements InterfaceTela {
 
     @Override
     public void draw ( TelaAtual tela ) {
+<<<<<<< Updated upstream
        selectionSort.desenhaBotao ( tela );
+=======
+        
+        tela.clearBackground ( new Color(181,199,235) );
+        
+        int mX = tela.getMouseX ();
+        int mY = tela.getMouseY ();
+        
+        selectionSort.desenhaBotao ( tela, mX , mY );
+        bubbleSort.desenhaBotao ( tela, mX , mY );
+        mergeSort.desenhaBotao ( tela, mX , mY );
+        shellSort.desenhaBotao ( tela, mX , mY );
+        quickSort.desenhaBotao ( tela, mX , mY );
+        insertionSort.desenhaBotao ( tela, mX , mY );
+        heapSort.desenhaBotao ( tela, mX , mY );
+        
+        //Titulo:
+        int tituloX = 350; 
+        int tituloY = 150; 
+        
+        tela.drawText("Algoritmos de", tituloX, tituloY, 45, tela.WHITE);
+        
+        tela.drawText("Ordenação", tituloX + 50, tituloY + 50, 45, tela.WHITE);
+        
+        tela.drawText("Projeto de Estrutura de Dados", tituloX + 5, tituloY + 100, 20, Vermelho);
+
+>>>>>>> Stashed changes
     }
 
     @Override
