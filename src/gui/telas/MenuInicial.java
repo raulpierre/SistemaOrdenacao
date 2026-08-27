@@ -1,13 +1,14 @@
 package gui.telas;
 
-import br.com.davidbuzatto.jsge.collision.aabb.AABB;
 import gui.componentesTela.Botao;
+import java.awt.Color;
 
 /**
  *
  * @author cayke
  */
 public class MenuInicial implements InterfaceTela {
+    
     
     Botao selectionSort;
     Botao bubbleSort;
@@ -20,6 +21,7 @@ public class MenuInicial implements InterfaceTela {
 
     @Override
     public void create () {
+        
         int posX = 100;
         int posY = 50;
         
@@ -95,14 +97,16 @@ public class MenuInicial implements InterfaceTela {
     @Override
     public void draw ( TelaAtual tela ) {
         
-       selectionSort.desenhaBotao ( tela );
-       bubbleSort.desenhaBotao ( tela );
-       mergeSort.desenhaBotao ( tela );
-       shellSort.desenhaBotao ( tela );
-       quickSort.desenhaBotao ( tela );
-       insertionSort.desenhaBotao ( tela );
-       heapSort.desenhaBotao ( tela );
-       
+        tela.clearBackground ( new Color(210,10,46) );
+        
+        selectionSort.desenhaBotao ( tela );
+        bubbleSort.desenhaBotao ( tela );
+        mergeSort.desenhaBotao ( tela );
+        shellSort.desenhaBotao ( tela );
+        quickSort.desenhaBotao ( tela );
+        insertionSort.desenhaBotao ( tela );
+        heapSort.desenhaBotao ( tela );
+
     }
 
     @Override
