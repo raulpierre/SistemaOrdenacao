@@ -17,6 +17,8 @@ public class Botao {
     private String textoBotao;
     private Color cinzaClaro = new Color(211,211,211);
     private Color Onyx = new Color(53,56,57);
+    private Color Laranja = new Color(242,185,73);
+    
     //private Font fonte;
     
     public Botao ( int posX , int posY , String textoBotao ) {
@@ -45,15 +47,20 @@ public class Botao {
     }
     
     
-    public void desenhaBotao( EngineFrame e ){
+    public void desenhaBotao( EngineFrame e, int mX, int mY){
         
        int fonteTam = 15;
        int larguraTexto = e.measureText ( textoBotao , fonteTam);
        this.largura = larguraTexto * 1.5;
        //e.setFont(this.fonte);
                
+       if(checarColisao(mX,mY)){
+           e.fillRectangle ( posX, posY, largura , altura , Laranja );
+       }
+       else{
+           e.fillRectangle ( posX, posY, largura , altura , cinzaClaro );
+       }
        
-       e.fillRectangle ( posX, posY, largura , altura , cinzaClaro );
        e.drawRectangle ( posX , posY , largura , altura , EngineFrame.BLACK );
        e.drawText(textoBotao , posX + (largura - larguraTexto)/2 , posY + altura /2 - 5  , fonteTam , Onyx );
        //e.drawText(textoBotao, posX + (largura - larguraTexto)/2, posY + altura / 2 - 5, EngineFrame.WHITE);
