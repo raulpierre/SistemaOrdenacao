@@ -1,6 +1,7 @@
 package gui.telas;
 
 import static algoritmos.ShellSort.shellSort;
+import gui.componentesTela.Botao;
 import gui.componentesTela.EstadoOrdenacao;
 import gui.componentesTela.Grafico;
 import java.util.ArrayList;
@@ -9,26 +10,31 @@ import java.util.List;
 
 public class TelaShellSort implements InterfaceTela {
     
-    private int[] array;
+    private int[] a;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
     private Grafico grafico;
     
     private double tempoParaMudar;
     private double contadorTempo;
+    Botao mais;
+    Botao menos;
     
     @Override
     public void create() {
         
         copias = new ArrayList<>();
-        array = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
         copiaAtual = 0;
         grafico = new Grafico();
         
         tempoParaMudar = 1;
         contadorTempo = 0;
         
-        shellSort(array, copias);
+        mais = new Botao(700, 50, 30,"+");
+        menos = new Botao(620, 50, 30,"-");
+        
+        shellSort(a, copias);
         System.out.println(copias.size());
     }
 
@@ -44,14 +50,31 @@ public class TelaShellSort implements InterfaceTela {
             }
             contadorTempo = 0;
         }
+        int MouseX = tela.getMouseX();
+        int MouseY = tela.getMouseY();
+        
+        if(mais.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar += 0.5;
+            }
+        }
+        if(menos.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar -= 0.5;
+            }
+        }
         
     }
     
     @Override
     public void draw(TelaAtual tela) {
         
-        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
-    
+        menos.desenhaBotao(tela);
+        mais.desenhaBotao(tela);
+        tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
+        tela.drawText("Velocidade", 645, 40, tela.BLACK);
+        
+        grafico.desenharGrafico( tela , copias.get( copiaAtual ));    
     }
 
     @Override

@@ -1,29 +1,94 @@
 package gui.telas;
 
-/**
- *
- * @author cayke
- */
+
+import algoritmos.QuickSort;
+import gui.componentesTela.Botao;
+import gui.componentesTela.EstadoOrdenacao;
+import gui.componentesTela.Grafico;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class TelaInsertionSort implements InterfaceTela {
-
+    
+    private int[] a;
+    private List<EstadoOrdenacao> copias;
+    private int copiaAtual;
+    private Grafico grafico;
+    
+    private double tempoParaMudar;
+    private double contadorTempo;
+    Botao mais;
+    Botao menos;
+    
+    
+    
     @Override
-    public void create () {
-        throw new UnsupportedOperationException ( "Not supported yet." ); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create() {
+        
+        copias = new ArrayList<>();
+        a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        copiaAtual = 0;
+        grafico = new Grafico();
+        
+        tempoParaMudar = 1;
+        contadorTempo = 0;
+        
+        mais = new Botao(700, 50, 30,"+");
+        menos = new Botao(620, 50, 30,"-");
+        
+        mais = new Botao(700, 50, 30,"+");
+        menos = new Botao(620, 50, 30,"-");
+       
+        
+        QuickSort.quickSort(a,0,a.length-1, copias);
+        System.out.println(copias.size());
     }
 
+    
     @Override
-    public void update ( double delta , TelaAtual janela ) {
-        throw new UnsupportedOperationException ( "Not supported yet." ); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update( double delta, TelaAtual tela ) {
+        
+        contadorTempo += delta;
+        
+        if(contadorTempo >= tempoParaMudar){
+            if(copiaAtual< copias.size() -1 ){
+                copiaAtual++;
+            }
+            contadorTempo = 0;
+        }
+        
+        int MouseX = tela.getMouseX();
+        int MouseY = tela.getMouseY();
+        
+        if(mais.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar += 0.5;
+            }
+        }
+        if(menos.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar -= 0.5;
+            }
+        }
+        
     }
-
+    
     @Override
-    public void draw ( TelaAtual janela ) {
-        throw new UnsupportedOperationException ( "Not supported yet." ); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void draw(TelaAtual tela) {
+        
+        menos.desenhaBotao(tela);
+        mais.desenhaBotao(tela);
+        tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
+        tela.drawText("Velocidade", 645, 40, tela.BLACK);
+        
+        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
+    
     }
 
     @Override
     public String getTitulo () {
         return "Insertion Sort";
     }
-    
+   
 }

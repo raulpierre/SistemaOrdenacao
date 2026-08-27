@@ -2,6 +2,7 @@ package gui.telas;
 
 import algoritmos.HeapSort;
 import static algoritmos.SelectionSort.selectionSort;
+import gui.componentesTela.Botao;
 import gui.componentesTela.EstadoOrdenacao;
 import gui.componentesTela.Grafico;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class TelaHeapSort implements InterfaceTela {
     
     private double tempoParaMudar;
     private double contadorTempo;
+    Botao mais;
+    Botao menos;
     
     
     
@@ -35,6 +38,9 @@ public class TelaHeapSort implements InterfaceTela {
         
         tempoParaMudar = 1;
         contadorTempo = 0;
+        
+        mais = new Botao(700, 50, 30,"+");
+        menos = new Botao(620, 50, 30,"-");
         
         HeapSort.heapSort(a, copias);
         System.out.println();
@@ -52,11 +58,28 @@ public class TelaHeapSort implements InterfaceTela {
             }
             contadorTempo = 0;
         }
+        int MouseX = tela.getMouseX();
+        int MouseY = tela.getMouseY();
         
+        if(mais.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar += 0.5;
+            }
+        }
+        if(menos.checarColisao(MouseX, MouseY)){
+            if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
+                tempoParaMudar -= 0.5;
+            }
+        }
     }
     
     @Override
     public void draw(TelaAtual tela) {
+        
+        menos.desenhaBotao(tela);
+        mais.desenhaBotao(tela);
+        tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
+        tela.drawText("Velocidade", 645, 40, tela.BLACK);
         
         grafico.desenharGrafico( tela , copias.get( copiaAtual ));
     

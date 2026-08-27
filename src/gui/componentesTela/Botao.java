@@ -10,7 +10,7 @@ public class Botao {
     
     private int posX;
     private int posY;
-    private double largura;
+    private double largura = 0;
     private int altura = 30;
     private String textoBotao;
     
@@ -19,6 +19,14 @@ public class Botao {
         this.textoBotao = textoBotao;
         this.posX = posX;
         this.posY = posY;
+    
+    }
+    public Botao ( int posX , int posY , double largura, String textoBotao ) {
+        
+        this.textoBotao = textoBotao;
+        this.posX = posX;
+        this.posY = posY;
+        this.largura = largura;
     
     }
 
@@ -43,8 +51,9 @@ public class Botao {
        
        int fonte = 15;
        int larguraTexto = e.measureText ( textoBotao , fonte);
-       this.largura = larguraTexto * 1.5;
-               
+       if(this.largura == 0){
+           this.largura = larguraTexto * 1.5;
+       }        
        
        e.fillRectangle ( posX, posY, largura , altura , EngineFrame.GRAY );
        e.drawRectangle ( posX , posY , largura , altura , EngineFrame.BLACK );
