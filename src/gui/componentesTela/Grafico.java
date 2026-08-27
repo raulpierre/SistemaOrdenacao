@@ -13,13 +13,24 @@ import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.YELLOW;
  */
 public class Grafico {
     
-    public void desenharGrafico ( EngineFrame e, EstadoOrdenacao estado ){
+   // private int comprimento;// e definida pela soma das colunas e os espacamentos
+    //private int altura;// e definida pelo maior elemento do array
+    
+//    public Grafico(int comprimento, int altura){
+//        this.comprimento = comprimento;
+//        this.altura = altura;
+//        
+//    }
+    
+    public void desenharGrafico (EngineFrame e, EstadoOrdenacao estado){
         
         int[] a = estado.array;
+        
         int tamanho = 30;
-        int iniX = 10;
-        int iniY = 440;
         int espacamento = 10;
+        
+        int iniX = e.getScreenWidth() / 4;
+        int iniY = e.getScreenHeight() - 10;
         
         for(int i = 0; i < a.length; i++){
             int v =  a[i];

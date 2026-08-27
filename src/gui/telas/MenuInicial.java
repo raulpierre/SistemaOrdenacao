@@ -45,7 +45,7 @@ public class MenuInicial implements InterfaceTela {
             
              if(tela.isMouseButtonPressed ( tela.MOUSE_BUTTON_LEFT )){
                  System.out.println ( "CLICOU" );
-               tela.mudarTela ( new TelaShellSort() );
+               tela.mudarTela ( new TelaHeapSort() );
             }
         }
         
