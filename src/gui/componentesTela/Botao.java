@@ -1,24 +1,32 @@
 package gui.componentesTela;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
+import br.com.davidbuzatto.jsge.font.FontUtils;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  *
  * @author cayke
  */
 public class Botao {
-    
     private int posX;
     private int posY;
     private double largura = 0;
     private int altura = 30;
     private String textoBotao;
+    private Color cinzaClaro = new Color(211,211,211);
+    private Color Onyx = new Color(53,56,57);
+    private Color Laranja = new Color(242,185,73);
+    
+    //private Font fonte;
     
     public Botao ( int posX , int posY , String textoBotao ) {
         
         this.textoBotao = textoBotao;
         this.posX = posX;
         this.posY = posY;
+        //fonte = FontUtils.loadFont("src/Resources/Agbalumo-Regular.ttf") ;
     
     }
     public Botao ( int posX , int posY , double largura, String textoBotao ) {
@@ -47,18 +55,25 @@ public class Botao {
     }
     
     
-    public void desenhaBotao( EngineFrame e ){
+    public void desenhaBotao( EngineFrame e, int mX, int mY){
+        
+       int fonteTam = 15;
+       int larguraTexto = e.measureText ( textoBotao , fonteTam);
        
-       int fonte = 15;
-       int larguraTexto = e.measureText ( textoBotao , fonte);
        if(this.largura == 0){
            this.largura = larguraTexto * 1.5;
-       }        
+       } 
+               
+       if(checarColisao(mX,mY)){
+           e.fillRectangle ( posX, posY, largura , altura , Laranja );
+       }
+       else{
+           e.fillRectangle ( posX, posY, largura , altura , cinzaClaro );
+       }       
        
-       e.fillRectangle ( posX, posY, largura , altura , EngineFrame.GRAY );
        e.drawRectangle ( posX , posY , largura , altura , EngineFrame.BLACK );
-       e.drawText(textoBotao , posX + (largura - larguraTexto)/2 , posY + altura /2 - 5  , fonte , EngineFrame.WHITE );
-       
+       e.drawText(textoBotao , posX + (largura - larguraTexto)/2 , posY + altura /2 - 5  , fonteTam , Onyx );
+       //e.drawText(textoBotao, posX + (largura - larguraTexto)/2, posY + altura / 2 - 5, EngineFrame.WHITE);
     }
     
     public boolean checarColisao(int x, int y){

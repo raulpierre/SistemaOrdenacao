@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import static algoritmos.InsertionSort.insertionSort;
+import gui.componentesTela.Botao;
+import gui.componentesTela.EstadoOrdenacao;
+import gui.componentesTela.Grafico;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author cayke
+ */
 public class TelaInsertionSort implements InterfaceTela {
     
     private int[] a;
@@ -20,12 +31,12 @@ public class TelaInsertionSort implements InterfaceTela {
     private double contadorTempo;
     Botao mais;
     Botao menos;
-    
-    
-    
+    private Botao botaoVoltar;   
+
     @Override
-    public void create() {
+    public void create () {
         
+        botaoVoltar = new Botao(20, 20, "Voltar");
         copias = new ArrayList<>();
         a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
         copiaAtual = 0;
@@ -34,14 +45,10 @@ public class TelaInsertionSort implements InterfaceTela {
         tempoParaMudar = 1;
         contadorTempo = 0;
         
-        mais = new Botao(700, 50, 30,"+");
+         mais = new Botao(700, 50, 30,"+");
         menos = new Botao(620, 50, 30,"-");
         
-        mais = new Botao(700, 50, 30,"+");
-        menos = new Botao(620, 50, 30,"-");
-       
-        
-        QuickSort.quickSort(a,0,a.length-1, copias);
+        insertionSort(a, copias);
         System.out.println(copias.size());
     }
 
@@ -58,34 +65,48 @@ public class TelaInsertionSort implements InterfaceTela {
             contadorTempo = 0;
         }
         
-        int MouseX = tela.getMouseX();
-        int MouseY = tela.getMouseY();
+        int mouseX = tela.getMouseX();
+        int mouseY = tela.getMouseY();
         
-        if(mais.checarColisao(MouseX, MouseY)){
+        if(mais.checarColisao(mouseX, mouseY)){
             if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
                 tempoParaMudar += 0.5;
             }
         }
-        if(menos.checarColisao(MouseX, MouseY)){
+        if(menos.checarColisao(mouseX, mouseY)){
             if(tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)){
                 tempoParaMudar -= 0.5;
             }
         }
-        
+        if (botaoVoltar.checarColisao(mouseX, mouseY)) {
+            if (tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)) {
+                tela.mudarTela(new MenuInicial());
+            }
+        }
     }
     
+
     @Override
     public void draw(TelaAtual tela) {
         
-        menos.desenhaBotao(tela);
-        mais.desenhaBotao(tela);
+        int mX = tela.getMouseX();
+        int mY = tela.getMouseY();
+        
+        menos.desenhaBotao(tela,mX,mY);
+        mais.desenhaBotao(tela,mX,mY);
         tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
         tela.drawText("Velocidade", 645, 40, tela.BLACK);
         
+        
+        
+ 
+        
         grafico.desenharGrafico( tela , copias.get( copiaAtual ));
-    
+        botaoVoltar.desenhaBotao(tela, mX, mY);
+        
     }
 
+            
     @Override
     public String getTitulo () {
         return "Insertion Sort";

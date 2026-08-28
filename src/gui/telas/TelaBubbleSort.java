@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class TelaBubbleSort implements InterfaceTela {
    
+    private Botao botaoVoltar;
     private int[] a;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
@@ -26,6 +27,8 @@ public class TelaBubbleSort implements InterfaceTela {
 
     @Override
     public void create () {
+        
+        botaoVoltar = new Botao(20, 20, "Voltar");
         copias = new ArrayList<>();
         a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
         copiaAtual = 0;
@@ -44,6 +47,8 @@ public class TelaBubbleSort implements InterfaceTela {
     @Override
     public void update ( double delta , TelaAtual tela ) {
         
+        int mouseX = tela.getMouseX();
+        int mouseY = tela.getMouseY();
         contadorTempo += delta;
         
         if(contadorTempo >= tempoParaMudar){
@@ -52,6 +57,14 @@ public class TelaBubbleSort implements InterfaceTela {
             }
             contadorTempo = 0;
         }
+        
+        
+        if (botaoVoltar.checarColisao(mouseX, mouseY)) {
+            if (tela.isMouseButtonPressed(tela.MOUSE_BUTTON_LEFT)) {
+                tela.mudarTela(new MenuInicial());
+            }
+        }
+        
         int MouseX = tela.getMouseX();
         int MouseY = tela.getMouseY();
         
@@ -66,16 +79,21 @@ public class TelaBubbleSort implements InterfaceTela {
             }
         }
     }
+    
+    
 
     @Override
     public void draw ( TelaAtual tela ) {
         
-        menos.desenhaBotao(tela);
-        mais.desenhaBotao(tela);
+        int mX = tela.getMouseX();
+        int mY = tela.getMouseY();
+        menos.desenhaBotao(tela,mX,mY);
+        mais.desenhaBotao(tela,mX,mY);
         tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
         tela.drawText("Velocidade", 645, 40, tela.BLACK);
         
         grafico.desenharGrafico( tela , copias.get( copiaAtual ));
+        botaoVoltar.desenhaBotao(tela, mX, mY);
         
     }
 
