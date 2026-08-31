@@ -12,7 +12,7 @@ public class BubbleSort {
     
     public static void bubbleSort(int[] a, List<EstadoOrdenacao> copias){
         
-        salvarEstadoOrdenacao(a , -1 , -1 , -1 , copias );
+        salvarEstadoOrdenacao(a , copias );
         
         do{
             
@@ -22,7 +22,7 @@ public class BubbleSort {
                 
                 int  j = i + 1;
                 
-                salvarEstadoOrdenacao(a , i , j, i , copias );
+                salvarEstadoOrdenacao(a , copias );
                 
                 if(a[i] > a[j]){
                     int temp = a[i];
@@ -30,7 +30,7 @@ public class BubbleSort {
                     a[j] = temp;
                     troca = true;
                     
-                    salvarEstadoOrdenacao(a, i , j , i , copias);
+                    salvarEstadoOrdenacao(a, copias);
                 }
             }
             

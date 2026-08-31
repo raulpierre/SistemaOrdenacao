@@ -26,10 +26,10 @@ public class ShellSort {
                 
                 while(j >= espacamento && array[j - espacamento] > array[j]){
                     
-                    EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+                    EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
                     trocar(array, j-espacamento, j);
                     
-                    EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+                    EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
                     j = j - espacamento;
                 }
             }

@@ -26,12 +26,12 @@ public class QuickSort {
             if(array[index2] <= pivo){
                 index1 += 1;
                 trocar(array, index1, index2);
-                EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+                EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
             }
         }
         
         trocar(array, index1 + 1, fim);
-        EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+        EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
         return index1 + 1;
     }
     

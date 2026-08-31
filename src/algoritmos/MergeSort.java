@@ -7,7 +7,7 @@ import java.util.List;
 public class MergeSort {
 
     public static void mergeSort(int[] array, List<EstadoOrdenacao> copias) {
-        salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+        salvarEstadoOrdenacao(array, copias);
         
         int length = array.length;
         int[] tempMS = new int[length];
@@ -37,7 +37,7 @@ public class MergeSort {
             
             int posI = (i <= middle) ? i : -1;
             int posJ = (j <= end) ? j : -1;
-            salvarEstadoOrdenacao(array, posI, posJ, k, copias);
+            salvarEstadoOrdenacao(array, copias);
 
             if (i > middle) {
                 array[k] = tempMS[j++];
@@ -49,7 +49,7 @@ public class MergeSort {
                 array[k] = tempMS[i++];
             }
             
-            salvarEstadoOrdenacao(array, -1, -1, k, copias);
+            salvarEstadoOrdenacao(array, copias);
         }
     }
 }

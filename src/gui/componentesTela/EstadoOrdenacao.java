@@ -10,53 +10,38 @@ import java.util.List;
  */
 
 public class EstadoOrdenacao{
-    int[] array;
-    int posI;
-    int posJ;
-    int posMenor;
+    private int[] array;
     
-    public EstadoOrdenacao(int[] array, int posI, int posJ, int posMenor){
+    private int indicePrimario;   // Ex: o elemento selecionado, o pivot, etc.
+    private int indiceSecundario; // Ex: o elemento com o qual está sendo comparado
+
+    boolean[] getOrdenados() {
+        return ordenados;
+    }
+    public enum TipoAcao {COMPARACAO, TROCA, PIVO, ORDENADO, NENHUMA}
+    private TipoAcao acao;
+    private boolean[] ordenados;
+    
+    public EstadoOrdenacao(int[] array){
         this.array = array;
-        this.posI = posI;
-        this.posJ = posJ;
-        this.posMenor = posMenor;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Arrays.hashCode(this.array);
-        hash = 17 * hash + this.posI;
-        hash = 17 * hash + this.posJ;
-        hash = 17 * hash + this.posMenor;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final EstadoOrdenacao other = (EstadoOrdenacao) obj;
-        if (this.posI != other.posI) {
-            return false;
-        }
-        if (this.posJ != other.posJ) {
-            return false;
-        }
-        if (this.posMenor != other.posMenor) {
-            return false;
-        }
-        return Arrays.equals(this.array, other.array);
+    public EstadoOrdenacao(int[] array, int indicePrimario, int indiceSecundario, TipoAcao acao, boolean[] ordenados) {
+        this.array = array;
+        this.indicePrimario = indicePrimario;
+        this.indiceSecundario = indiceSecundario;
+        this.acao = acao;
+        this.ordenados = ordenados;
     }
     
-    public static void salvarEstadoOrdenacao(int[] origem, int posI, int posJ, int posMenor, List<EstadoOrdenacao> copias){
+    public static void salvarEstadoOrdenacao(int[] origem, List<EstadoOrdenacao> copias, int indicePrimario, int indiceSecundario, TipoAcao acao, boolean[] ordenados){
+        int[] copia = origem.clone();
+        boolean[] copiaOrdenados = ordenados.clone(); // Clona os estados de ordenação também
+        
+        EstadoOrdenacao estadoCopia = new EstadoOrdenacao(copia, indicePrimario, indiceSecundario, acao, copiaOrdenados);
+        copias.add(estadoCopia);
+    }
+    public static void salvarEstadoOrdenacao(int[] origem, List<EstadoOrdenacao> copias){
         
         int[] copia = new int[origem.length];
         
@@ -65,9 +50,26 @@ public class EstadoOrdenacao{
         for(int i = 0; i < copia.length; i++){
             copia[i] = origem[i];
         }
-        EstadoOrdenacao estadoCopia = new EstadoOrdenacao(copia, posI, posJ, posMenor);
+        EstadoOrdenacao estadoCopia = new EstadoOrdenacao(copia);
         
         copias.add(estadoCopia);
     }
+
+    public int[] getArray() {
+        return array;
+    }
+
+    public int getIndicePrimario() {
+        return indicePrimario;
+    }
+
+    public int getIndiceSecundario() {
+        return indiceSecundario;
+    }
+
+    public TipoAcao getAcao() {
+        return acao;
+    }
+    
     
 }

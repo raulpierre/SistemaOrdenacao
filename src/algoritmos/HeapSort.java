@@ -12,9 +12,9 @@ public class HeapSort {
         ConstrutorHeapMaximo(array, copias);
         int tamanhoHeap = array.length;
         for(int i = array.length - 1; i >= 1; i--){
-            EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+            EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
             trocar(array, 0, i);
-            EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+            EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
             tamanhoHeap--;
             HeapMaximo(array, 0,tamanhoHeap, copias);
         }
@@ -37,9 +37,9 @@ public class HeapSort {
             maior = direita;
         }
         if(maior != no){
-            EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+            EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
             trocar(array, no, maior);
-            EstadoOrdenacao.salvarEstadoOrdenacao(array, -1, -1, -1, copias);
+            EstadoOrdenacao.salvarEstadoOrdenacao(array, copias);
             HeapMaximo(array, maior, tamanhoHeap, copias);
         }
         

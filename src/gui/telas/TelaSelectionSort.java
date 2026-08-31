@@ -3,6 +3,7 @@ package gui.telas;
 import static algoritmos.SelectionSort.selectionSort;
 import gui.componentesTela.Botao;
 import gui.componentesTela.EstadoOrdenacao;
+import gui.componentesTela.EstadoOrdenacao.TipoAcao;
 import gui.componentesTela.Grafico;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,8 @@ public class TelaSelectionSort implements InterfaceTela {
     public void create () {
         
         botaoVoltar = new Botao(20, 20, "Voltar");
-        copias = new ArrayList<>();
-        a = new int[]{9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        copias = new ArrayList<EstadoOrdenacao>();
+        a = new int[]{9, 5, 4, 10, 2, 7, 6, 8, 3, 1};
         copiaAtual = 0;
         grafico = new Grafico();
         
@@ -93,8 +94,8 @@ public class TelaSelectionSort implements InterfaceTela {
         tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
         tela.drawText("Velocidade", 645, 40, tela.BLACK);
         
-        grafico.desenharGrafico( tela , copias.get( copiaAtual ));    
-        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
+        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));    
+        
         botaoVoltar.desenhaBotao(tela, mX, mY);
         
     }

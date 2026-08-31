@@ -12,7 +12,7 @@ public class InsertionSort {
     
     public static void insertionSort(int[] array, List<EstadoOrdenacao> copia){
         
-        salvarEstadoOrdenacao ( array , -1 , -1 , -1 , copia );
+        salvarEstadoOrdenacao (array , copia );
         
         for(int i = 1 ; i < array.length ; i ++){
             
@@ -21,10 +21,10 @@ public class InsertionSort {
                 trocar( array , j-1 , j);
                 j--;
                 
-                salvarEstadoOrdenacao ( array , i , j , i , copia );
+                salvarEstadoOrdenacao (array , copia );
             }
             
-            salvarEstadoOrdenacao ( array , i , j , i , copia );
+            salvarEstadoOrdenacao (array , copia );
 
         }
         
