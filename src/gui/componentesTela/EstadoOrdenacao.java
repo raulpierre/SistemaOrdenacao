@@ -41,6 +41,8 @@ public class EstadoOrdenacao{
         EstadoOrdenacao estadoCopia = new EstadoOrdenacao(copia, indicePrimario, indiceSecundario, acao, copiaOrdenados);
         copias.add(estadoCopia);
     }
+    
+    
     public static void salvarEstadoOrdenacao(int[] origem, List<EstadoOrdenacao> copias){
         
         int[] copia = new int[origem.length];

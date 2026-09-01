@@ -44,7 +44,7 @@ public class TelaHeapSort implements InterfaceTela {
         
         heapSort(a, copias);
         System.out.println();
-        heapSort(a, copias);
+        
         System.out.println(copias.size());
     }
 
@@ -96,7 +96,7 @@ public class TelaHeapSort implements InterfaceTela {
         tela.drawText(String.format("%.1f",tempoParaMudar), 665, 64, tela.BLACK);
         tela.drawText("Velocidade", 645, 40, tela.BLACK);
         
-        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
+        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
         botaoVoltar.desenhaBotao(tela, mX, mY);
         
     }

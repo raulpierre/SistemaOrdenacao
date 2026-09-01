@@ -101,7 +101,7 @@ public class TelaInsertionSort implements InterfaceTela {
         
  
         
-        grafico.desenharGrafico( tela , copias.get( copiaAtual ));
+        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
         botaoVoltar.desenhaBotao(tela, mX, mY);
         
     }
