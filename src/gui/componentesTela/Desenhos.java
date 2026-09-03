@@ -12,12 +12,12 @@ import java.awt.Color;
  *
  * @author cayke
  */
-public class Grafico {
+public class Desenhos {
     
    // private int comprimento;// e definida pela soma das colunas e os espacamentos
     //private int altura;// e definida pelo maior elemento do array
     
-//    public Grafico(int comprimento, int altura){
+//    public Desenhos(int comprimento, int altura){
 //        this.comprimento = comprimento;
 //        this.altura = altura;
 //        
@@ -93,6 +93,39 @@ public class Grafico {
         
     }
     
-    
-    
+    public void desenharLegenda(EngineFrame e) {
+        int posX = 635; 
+        int posY = 250; 
+        int tamanhoCaixa = 15;
+        int espacamentoY = 25; 
+        int fonte = 12;
+
+        
+        e.fillRectangle(posX - 15, posY - 40, 170, 190, new Color(255,255,227));
+        e.drawRectangle(posX - 15, posY - 40, 170, 190, EngineFrame.BLACK);
+        e.drawText("Legenda de Cores:", posX - 5, posY - 20,fonte, EngineFrame.BLACK);
+        
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.ORANGE);
+        e.drawText("Não Ordenado", posX + 25, posY,fonte, EngineFrame.BLACK);
+        posY += espacamentoY;
+
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.GREEN);
+        e.drawText("Procura", posX + 25, posY,fonte, EngineFrame.BLACK);
+        posY += espacamentoY;
+
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.BLUE);
+        e.drawText("Chave", posX + 25, posY,fonte, EngineFrame.BLACK);
+        posY += espacamentoY;
+
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.YELLOW);
+        e.drawText("Pivô", posX + 25, posY,fonte, EngineFrame.BLACK);
+        posY += espacamentoY;
+
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.RED);
+        e.drawText("Trocando", posX + 25, posY,fonte, EngineFrame.BLACK);
+        posY += espacamentoY;
+
+        e.fillRectangle(posX, posY, tamanhoCaixa, tamanhoCaixa, EngineFrame.GRAY);
+        e.drawText("Ordenado", posX + 25, posY,fonte, EngineFrame.BLACK);
+    }
 }

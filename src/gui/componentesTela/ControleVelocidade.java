@@ -16,7 +16,7 @@ public class ControleVelocidade {
     private int posY;
 
     public ControleVelocidade() {
-        this.posX = 620;
+        this.posX = 665;
         this.posY = 50;
         this.velocidade = 1.0;
 
