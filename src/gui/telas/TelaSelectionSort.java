@@ -70,7 +70,7 @@ public class TelaSelectionSort implements InterfaceTela {
 
     @Override
     public String getTitulo () {
-        return "Seletion Sort";
+        return "Selection Sort";
     }
    
 }
