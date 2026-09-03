@@ -5,6 +5,7 @@ import gui.componentesTela.BotaoVoltar;
 import gui.componentesTela.ControleVelocidade;
 import gui.componentesTela.EstadoOrdenacao;
 import gui.componentesTela.Grafico;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,10 +61,11 @@ public class TelaBubbleSort implements InterfaceTela {
         int mX = tela.getMouseX();
         int mY = tela.getMouseY();
         
-        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
+        tela.clearBackground ( new Color(181,199,235) );
+        
         botaoVoltar.desenhaBotao(tela, mX, mY);
         controleVelocidade.desenhar(tela);
-        
+        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
     }
 
     @Override

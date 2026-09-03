@@ -50,11 +50,18 @@ public class Grafico {
         int tamanho = 30;
         int espacamento = 10;
         
+        
+        
         int iniX = e.getScreenWidth() / 4;
         int iniY = e.getScreenHeight() - 10;
         
         Color cor;
-
+        
+        int larguraBorda = (arrayAtual.length * (tamanho + espacamento)) - espacamento + 40;
+        int alturaBorda = iniY - 15;
+        e.fillRectangle(iniX - 20, 15, larguraBorda, alturaBorda, new Color(255,255,227));
+        e.drawRectangle(iniX - 20, 15, larguraBorda, alturaBorda, EngineFrame.BLACK);
+                
         for (int i = 0; i < arrayAtual.length; i++) {
             
             // Regra de cores prioritária: Destaques primários > Destaques secundários > Itens finalizados > Itens pendentes
@@ -82,6 +89,8 @@ public class Grafico {
             int altura = v * tamanho;
             e.fillRectangle(iniX + i * (tamanho + espacamento), iniY - altura, tamanho, altura, cor);
         }   
+        
+        
     }
     
     

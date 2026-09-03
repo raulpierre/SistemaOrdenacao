@@ -56,10 +56,10 @@ public class TelaShellSort implements InterfaceTela {
         int mX = tela.getMouseX();
         int mY = tela.getMouseY();
         
-        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
+        
         botaoVoltar.desenhaBotao(tela, mX, mY);
         controleVelocidade.desenhar(tela);
-        
+        grafico.desenharGraficoTeste( tela , copias.get( copiaAtual ));
     }
     
 
